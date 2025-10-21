@@ -11,6 +11,7 @@
 @import '../../styles/gallery-styles.css';
 @import '../../styles/social-proof-styles.css';
 @import '../../styles/testimonials-styles.css';
+@import '../../styles/history-carousel-styles.css';
 
 @layer base {
   h1,
