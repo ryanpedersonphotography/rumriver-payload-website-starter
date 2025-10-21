@@ -29,7 +29,13 @@ export const HeroBlockComponent: React.FC<{ block: HeroBlock }> = ({ block }) =>
   const getImageUrl = (image: string | number | Media | undefined): string => {
     if (!image) return '/images/venue/barn-exterior-full-deck-view-evening.jpg'
     if (typeof image === 'string') return image
-    if (typeof image === 'number') return '/images/venue/barn-exterior-full-deck-view-evening.jpg'
+    if (typeof image === 'number') {
+      // When image is just an ID number, we can't resolve it here
+      // This happens when the Media relation isn't populated
+      console.warn('Hero backgroundImage is a number (Media ID) but not populated. Consider using depth > 0 in your query.')
+      return '/images/venue/barn-exterior-full-deck-view-evening.jpg'
+    }
+    // image is a Media object
     return image.url || '/images/venue/barn-exterior-full-deck-view-evening.jpg'
   }
 

@@ -96,6 +96,7 @@ const queryPageBySlug = cache(async ({ slug }: { slug: string }) => {
   const result = await payload.find({
     collection: 'pages',
     draft,
+    depth: 2, // Populate Media relations and other nested data
     limit: 1,
     pagination: false,
     overrideAccess: draft,
