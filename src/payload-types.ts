@@ -1631,7 +1631,6 @@ export interface Home {
         | HistoryCarouselBlock
         | ScheduleFormBlock
         | MapSectionBlock
-        | FooterBlock
       )[]
     | null;
   _status?: ('draft' | 'published') | null;
@@ -1939,54 +1938,6 @@ export interface MapSectionBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "FooterBlock".
- */
-export interface FooterBlock {
-  businessInfo: {
-    name: string;
-    description?: string | null;
-  };
-  contactInfo: {
-    address: {
-      street: string;
-      city: string;
-      state: string;
-      zipCode: string;
-    };
-    phone: string;
-    email: string;
-  };
-  socialLinks?:
-    | {
-        platform: 'facebook' | 'instagram' | 'twitter' | 'linkedin' | 'youtube';
-        url: string;
-        /**
-         * Text for screen readers (e.g., "Follow us on Facebook")
-         */
-        label: string;
-        id?: string | null;
-      }[]
-    | null;
-  styling?: {
-    /**
-     * Show the glassmorphic overlay and dot pattern
-     */
-    showGlassmorphicEffect?: boolean | null;
-    /**
-     * Show underlines, borders, and other decorative elements
-     */
-    showDecorativeElements?: boolean | null;
-  };
-  /**
-   * Leave blank to use auto-generated copyright with current year
-   */
-  copyrightText?: string | null;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'footer';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "header_select".
  */
 export interface HeaderSelect<T extends boolean = true> {
@@ -2047,7 +1998,6 @@ export interface HomeSelect<T extends boolean = true> {
         historyCarousel?: T | HistoryCarouselBlockSelect<T>;
         scheduleForm?: T | ScheduleFormBlockSelect<T>;
         mapSection?: T | MapSectionBlockSelect<T>;
-        footer?: T | FooterBlockSelect<T>;
       };
   _status?: T;
   updatedAt?: T;
@@ -2299,49 +2249,6 @@ export interface MapSectionBlockSelect<T extends boolean = true> {
         fullHeight?: T;
         splitLayout?: T;
       };
-  id?: T;
-  blockName?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "FooterBlock_select".
- */
-export interface FooterBlockSelect<T extends boolean = true> {
-  businessInfo?:
-    | T
-    | {
-        name?: T;
-        description?: T;
-      };
-  contactInfo?:
-    | T
-    | {
-        address?:
-          | T
-          | {
-              street?: T;
-              city?: T;
-              state?: T;
-              zipCode?: T;
-            };
-        phone?: T;
-        email?: T;
-      };
-  socialLinks?:
-    | T
-    | {
-        platform?: T;
-        url?: T;
-        label?: T;
-        id?: T;
-      };
-  styling?:
-    | T
-    | {
-        showGlassmorphicEffect?: T;
-        showDecorativeElements?: T;
-      };
-  copyrightText?: T;
   id?: T;
   blockName?: T;
 }
