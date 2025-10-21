@@ -14,6 +14,7 @@ import { SocialProofBlockComponent } from '@/blocks/SocialProof/Component'
 import { TestimonialsBlockComponent } from '@/blocks/Testimonials/Component'
 import { HistoryCarouselBlockComponent } from '@/blocks/HistoryCarousel/Component'
 import { ScheduleFormBlockComponent } from '@/blocks/ScheduleForm/Component'
+import { MapSectionBlockComponent } from '@/blocks/MapSection/Component'
 
 const blockComponents = {
   alternatingBlocks: AlternatingBlocksComponent,
@@ -28,6 +29,7 @@ const blockComponents = {
   testimonials: TestimonialsBlockComponent,
   historyCarousel: HistoryCarouselBlockComponent,
   scheduleForm: ScheduleFormBlockComponent,
+  mapSection: MapSectionBlockComponent,
 }
 
 export const RenderBlocks: React.FC<{

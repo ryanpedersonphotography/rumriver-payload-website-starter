@@ -9,6 +9,7 @@ import { SocialProof } from '@/blocks/SocialProof/Component'
 import { Testimonials } from '@/blocks/Testimonials/Component'
 import { HistoryCarousel } from '@/blocks/HistoryCarousel/Component'
 import { ScheduleForm } from '@/blocks/ScheduleForm/Component'
+import { MapSection } from '@/blocks/MapSection/Component'
 import { getCachedGlobal } from '@/utilities/getGlobals'
 import { generateMeta } from '@/utilities/generateMeta'
 
@@ -154,6 +155,13 @@ export default async function HomePage() {
           scriptAccent: "Schedule Your Tour",
           title: "Start Planning Your Perfect Day",
           description: "We'd love to show you around our beautiful venue and discuss your wedding vision."
+        }}
+      />
+      <MapSection
+        sectionHeader={{
+          scriptAccent: "Interactive Location",
+          title: "Find Your Way to Forever",
+          description: "Discover our beautiful venue nestled in the heart of Minnesota, where your love story will unfold in perfect harmony with nature."
         }}
       />
     </div>
