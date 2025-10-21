@@ -7,6 +7,7 @@ import { ArchiveBlock } from '@/blocks/ArchiveBlock/Component'
 import { CallToActionBlock } from '@/blocks/CallToAction/Component'
 import { ContentBlock } from '@/blocks/Content/Component'
 import { FormBlock } from '@/blocks/Form/Component'
+import { GalleryBlockComponent } from '@/blocks/Gallery/Component'
 import { HeroBlockComponent } from '@/blocks/Hero/Component'
 import { MediaBlock } from '@/blocks/MediaBlock/Component'
 
@@ -16,6 +17,7 @@ const blockComponents = {
   content: ContentBlock,
   cta: CallToActionBlock,
   formBlock: FormBlock,
+  gallery: GalleryBlockComponent,
   hero: HeroBlockComponent,
   mediaBlock: MediaBlock,
 }

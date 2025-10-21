@@ -8,6 +8,7 @@
 @import '../../styles/navbar-styles.css';
 @import '../../styles/hero-styles.css';
 @import '../../styles/alternating-blocks-styles.css';
+@import '../../styles/gallery-styles.css';
 
 @layer base {
   h1,

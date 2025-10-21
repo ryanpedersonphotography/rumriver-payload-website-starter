@@ -4,6 +4,7 @@ import { Metadata } from 'next'
 import { RenderBlocks } from '@/blocks/RenderBlocks'
 import { Hero } from '@/blocks/Hero/Component'
 import { AlternatingBlocks } from '@/blocks/AlternatingBlocks/Component'
+import { Gallery } from '@/blocks/Gallery/Component'
 import { getCachedGlobal } from '@/utilities/getGlobals'
 import { generateMeta } from '@/utilities/generateMeta'
 
@@ -67,6 +68,69 @@ export default async function HomePage() {
             ],
             image: "/images/venue/property-field-wildflowers-natural.jpg",
             layout: "reverse"
+          }
+        ]}
+      />
+      <Gallery 
+        sectionHeader={{
+          scriptAccent: "Real Love Stories",
+          title: "Weddings at the Barn",
+          description: "Every celebration tells a unique story of love, laughter, and happily ever after."
+        }}
+        galleries={[
+          {
+            coupleNames: "Anthony & Linnea",
+            season: "Summer 2024",
+            photoCount: "114 Photos",
+            venue: "Rum River Barn",
+            image: "/wedding-photos/anthony-and-linnea/anthony-linnea-2024-001.jpg",
+            galleryLink: "/real-weddings/anthony-and-linnea",
+            gridSpan: "featured"
+          },
+          {
+            coupleNames: "Loria & Jason Rolstad",
+            season: "Summer 2024",
+            photoCount: "96 Photos",
+            venue: "Rum River Barn",
+            image: "/wedding-photos/loria-and-jason-rolstad-agape/loria-jason-wedding-portrait.jpg",
+            galleryLink: "/real-weddings/loria-and-jason-rolstad-agape",
+            gridSpan: "normal"
+          },
+          {
+            coupleNames: "Mattea Courtney",
+            season: "Summer 2024",
+            photoCount: "89 Photos",
+            venue: "Rum River Barn",
+            image: "/wedding-photos/mattea-courtney-photo-gallery/mattea-courtney-wedding-ceremony.jpg",
+            galleryLink: "/real-weddings/mattea-courtney-photo-gallery",
+            gridSpan: "normal"
+          },
+          {
+            coupleNames: "Kyle Carrie",
+            season: "Summer 2024",
+            photoCount: "57 Photos",
+            venue: "Rum River Barn",
+            image: "/wedding-photos/kyle-carrie/kyle-carrie-wedding-portrait.jpg",
+            galleryLink: "/real-weddings/kyle-carrie",
+            gridSpan: "normal"
+          },
+          {
+            coupleNames: "Emily & Barron Nixon",
+            season: "Summer 2024",
+            photoCount: "36 Photos",
+            venue: "Rum River Barn",
+            image: "/wedding-photos/emily-and-barron-nixon/emily-barron-wedding-reception.jpg",
+            galleryLink: "/real-weddings/emily-and-barron-nixon",
+            gridSpan: "normal"
+          },
+          {
+            coupleNames: "Joshua & Teri",
+            season: "Summer 2024",
+            photoCount: "36 Photos",
+            venue: "Rum River Barn",
+            image: "/wedding-photos/joshua-and-teri/joshua-teri-wedding-portrait.jpg",
+            galleryLink: "/real-weddings/joshua-and-teri",
+            gridSpan: "wide"
           }
         ]}
       />

@@ -1621,7 +1621,7 @@ export interface Footer {
  */
 export interface Home {
   id: number;
-  blocks?: (HeroBlock | AlternatingBlocksBlock)[] | null;
+  blocks?: (HeroBlock | AlternatingBlocksBlock | GalleryBlock)[] | null;
   _status?: ('draft' | 'published') | null;
   updatedAt?: string | null;
   createdAt?: string | null;
@@ -1684,6 +1684,32 @@ export interface AlternatingBlocksBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "GalleryBlock".
+ */
+export interface GalleryBlock {
+  sectionHeader: {
+    scriptAccent: string;
+    title: string;
+    description: string;
+  };
+  galleries?:
+    | {
+        coupleNames: string;
+        season: string;
+        photoCount: string;
+        venue: string;
+        image: number | Media;
+        galleryLink: string;
+        gridSpan: 'normal' | 'wide' | 'featured';
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'gallery';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "header_select".
  */
 export interface HeaderSelect<T extends boolean = true> {
@@ -1738,6 +1764,7 @@ export interface HomeSelect<T extends boolean = true> {
     | {
         hero?: T | HeroBlockSelect<T>;
         alternatingBlocks?: T | AlternatingBlocksBlockSelect<T>;
+        gallery?: T | GalleryBlockSelect<T>;
       };
   _status?: T;
   updatedAt?: T;
@@ -1781,6 +1808,33 @@ export interface AlternatingBlocksBlockSelect<T extends boolean = true> {
         content?: T;
         image?: T;
         layout?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "GalleryBlock_select".
+ */
+export interface GalleryBlockSelect<T extends boolean = true> {
+  sectionHeader?:
+    | T
+    | {
+        scriptAccent?: T;
+        title?: T;
+        description?: T;
+      };
+  galleries?:
+    | T
+    | {
+        coupleNames?: T;
+        season?: T;
+        photoCount?: T;
+        venue?: T;
+        image?: T;
+        galleryLink?: T;
+        gridSpan?: T;
         id?: T;
       };
   id?: T;
