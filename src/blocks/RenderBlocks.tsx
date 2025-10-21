@@ -15,7 +15,6 @@ import { TestimonialsBlockComponent } from '@/blocks/Testimonials/Component'
 import { HistoryCarouselBlockComponent } from '@/blocks/HistoryCarousel/Component'
 import { ScheduleFormBlockComponent } from '@/blocks/ScheduleForm/Component'
 import { MapSectionBlockComponent } from '@/blocks/MapSection/Component'
-import { FooterBlockComponent } from '@/blocks/Footer/Component'
 
 const blockComponents = {
   alternatingBlocks: AlternatingBlocksComponent,
@@ -31,7 +30,6 @@ const blockComponents = {
   historyCarousel: HistoryCarouselBlockComponent,
   scheduleForm: ScheduleFormBlockComponent,
   mapSection: MapSectionBlockComponent,
-  footer: FooterBlockComponent,
 }
 
 export const RenderBlocks: React.FC<{
@@ -52,7 +50,7 @@ export const RenderBlocks: React.FC<{
 
             if (Block) {
               return (
-                <div className={`${blockType === 'footer' ? 'mt-16' : 'my-16'}`} key={index}>
+                <div className="my-16" key={index}>
                   {/* @ts-expect-error there may be some mismatch between the expected types here */}
                   <Block {...block} disableInnerContainer />
                 </div>
