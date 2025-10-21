@@ -5,6 +5,7 @@ import { RenderBlocks } from '@/blocks/RenderBlocks'
 import { Hero } from '@/blocks/Hero/Component'
 import { AlternatingBlocks } from '@/blocks/AlternatingBlocks/Component'
 import { Gallery } from '@/blocks/Gallery/Component'
+import { SocialProof } from '@/blocks/SocialProof/Component'
 import { getCachedGlobal } from '@/utilities/getGlobals'
 import { generateMeta } from '@/utilities/generateMeta'
 
@@ -134,6 +135,7 @@ export default async function HomePage() {
           }
         ]}
       />
+      <SocialProof />
     </div>
   )
 }

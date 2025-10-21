@@ -9,6 +9,7 @@
 @import '../../styles/hero-styles.css';
 @import '../../styles/alternating-blocks-styles.css';
 @import '../../styles/gallery-styles.css';
+@import '../../styles/social-proof-styles.css';
 
 @layer base {
   h1,
