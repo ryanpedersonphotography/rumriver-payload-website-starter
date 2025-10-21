@@ -1,4 +1,6 @@
-import React from 'react'
+'use client'
+
+import React, { useEffect, useRef, useState } from 'react'
 import type { SocialProofBlock } from '@/payload-types'
 import RichText from '@/components/RichText'
 
@@ -14,6 +16,9 @@ interface SocialProofProps {
 }
 
 export const SocialProofBlockComponent: React.FC<{ block: SocialProofBlock }> = ({ block }) => {
+  const [hasTriggeredShimmer, setHasTriggeredShimmer] = useState(false)
+  const sectionRef = useRef<HTMLElement>(null)
+
   const {
     brandLogos = [
       { brandName: "THE KNOT", displayOrder: 1 },
@@ -35,6 +40,40 @@ export const SocialProofBlockComponent: React.FC<{ block: SocialProofBlock }> = 
       ]
     }
   } = block
+
+  // Scroll detection for shimmer trigger
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!sectionRef.current || hasTriggeredShimmer) return
+
+      const sectionRect = sectionRef.current.getBoundingClientRect()
+      const windowHeight = window.innerHeight
+      
+      // Trigger shimmer when section is completely scrolled past (top is above viewport)
+      if (sectionRect.bottom < windowHeight * 0.2) {
+        setHasTriggeredShimmer(true)
+        
+        // Add shimmer class
+        sectionRef.current.classList.add('hotfix-shimmer-triggered')
+        
+        // Create shimmer overlay element
+        const shimmerOverlay = document.createElement('div')
+        shimmerOverlay.className = 'hotfix-shimmer-overlay'
+        sectionRef.current.appendChild(shimmerOverlay)
+        
+        // Remove shimmer after animation completes
+        setTimeout(() => {
+          if (sectionRef.current && sectionRef.current.contains(shimmerOverlay)) {
+            sectionRef.current.removeChild(shimmerOverlay)
+            sectionRef.current.classList.remove('hotfix-shimmer-triggered')
+          }
+        }, 2000)
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [hasTriggeredShimmer])
 
   // Sort brand logos by display order
   const sortedLogos = [...brandLogos].sort((a, b) => (a.displayOrder || 0) - (b.displayOrder || 0))
@@ -63,7 +102,7 @@ export const SocialProofBlockComponent: React.FC<{ block: SocialProofBlock }> = 
   }
 
   return (
-    <section className="hotfix-brand-quote-section">
+    <section ref={sectionRef} className="hotfix-brand-quote-section">
       <div className="hotfix-brand-quote-content">
         {/* Brand Logos Section */}
         <div className="hotfix-brand-logos">

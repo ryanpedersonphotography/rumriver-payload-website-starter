@@ -7,6 +7,44 @@
   overflow: hidden !important;
 }
 
+/* Scroll-triggered shimmer effect for social proof section */
+.hotfix-brand-quote-section.hotfix-shimmer-triggered .hotfix-shimmer-overlay {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: -100% !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.15),
+    rgba(228, 200, 150, 0.2),
+    rgba(255, 255, 255, 0.15),
+    transparent
+  ) !important;
+  animation: hotfix-social-proof-shimmer 2s ease-in-out !important;
+  z-index: 15 !important;
+  pointer-events: none !important;
+}
+
+@keyframes hotfix-social-proof-shimmer {
+  0% {
+    left: -100% !important;
+    opacity: 0 !important;
+  }
+  10% {
+    opacity: 1 !important;
+  }
+  90% {
+    opacity: 1 !important;
+  }
+  100% {
+    left: 100% !important;
+    opacity: 0 !important;
+  }
+}
+
 /* Rounded Bevel Top Edge Divider */
 .hotfix-brand-quote-section::after {
   content: '' !important;

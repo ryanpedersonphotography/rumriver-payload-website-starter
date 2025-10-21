@@ -1621,7 +1621,7 @@ export interface Footer {
  */
 export interface Home {
   id: number;
-  blocks?: (HeroBlock | AlternatingBlocksBlock | GalleryBlock)[] | null;
+  blocks?: (HeroBlock | AlternatingBlocksBlock | GalleryBlock | SocialProofBlock)[] | null;
   _status?: ('draft' | 'published') | null;
   updatedAt?: string | null;
   createdAt?: string | null;
@@ -1710,6 +1710,40 @@ export interface GalleryBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "SocialProofBlock".
+ */
+export interface SocialProofBlock {
+  brandLogos?:
+    | {
+        brandName: string;
+        displayOrder: number;
+        id?: string | null;
+      }[]
+    | null;
+  testimonialQuote: {
+    quoteText: {
+      root: {
+        type: string;
+        children: {
+          type: any;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    };
+    attribution?: string | null;
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'socialProof';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "header_select".
  */
 export interface HeaderSelect<T extends boolean = true> {
@@ -1765,6 +1799,7 @@ export interface HomeSelect<T extends boolean = true> {
         hero?: T | HeroBlockSelect<T>;
         alternatingBlocks?: T | AlternatingBlocksBlockSelect<T>;
         gallery?: T | GalleryBlockSelect<T>;
+        socialProof?: T | SocialProofBlockSelect<T>;
       };
   _status?: T;
   updatedAt?: T;
@@ -1836,6 +1871,27 @@ export interface GalleryBlockSelect<T extends boolean = true> {
         galleryLink?: T;
         gridSpan?: T;
         id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "SocialProofBlock_select".
+ */
+export interface SocialProofBlockSelect<T extends boolean = true> {
+  brandLogos?:
+    | T
+    | {
+        brandName?: T;
+        displayOrder?: T;
+        id?: T;
+      };
+  testimonialQuote?:
+    | T
+    | {
+        quoteText?: T;
+        attribution?: T;
       };
   id?: T;
   blockName?: T;
