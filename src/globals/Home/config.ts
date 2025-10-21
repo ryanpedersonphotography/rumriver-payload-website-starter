@@ -3,6 +3,7 @@ import { AlternatingBlocks } from '@/blocks/AlternatingBlocks/config'
 import { Gallery } from '@/blocks/Gallery/config'
 import { Hero } from '@/blocks/Hero/config'
 import { SocialProof } from '@/blocks/SocialProof/config'
+import { Testimonials } from '@/blocks/Testimonials/config'
 
 export const Home: GlobalConfig = {
   slug: 'home',
@@ -19,8 +20,9 @@ export const Home: GlobalConfig = {
         AlternatingBlocks,
         Gallery,
         SocialProof,
+        Testimonials,
         // TODO: Add more blocks as they are created in future phases
-        // TestimonialsBlock, CarouselBlock, etc.
+        // CarouselBlock, FormBlock, MapBlock, etc.
       ],
     },
   ],

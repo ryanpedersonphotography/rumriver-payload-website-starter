@@ -10,6 +10,7 @@
 @import '../../styles/alternating-blocks-styles.css';
 @import '../../styles/gallery-styles.css';
 @import '../../styles/social-proof-styles.css';
+@import '../../styles/testimonials-styles.css';
 
 @layer base {
   h1,
