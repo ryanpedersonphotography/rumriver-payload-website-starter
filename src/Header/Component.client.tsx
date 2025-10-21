@@ -1,13 +1,11 @@
 'use client'
 import { useHeaderTheme } from '@/providers/HeaderTheme'
-import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 
 import type { Header } from '@/payload-types'
 
-import { Logo } from '@/components/Logo/Logo'
-import { HeaderNav } from './Nav'
+import { Navbar } from '@/components/Navbar'
 
 interface HeaderClientProps {
   data: Header
@@ -29,14 +27,23 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [headerTheme])
 
+  // Convert Payload navItems to our navbar format
+  const navItems = data?.navItems?.map((item) => {
+    const link = item?.link
+    if (!link) return { label: '', href: '/' }
+    
+    if (link.type === 'custom' && link.url) {
+      return { label: link.label || '', href: link.url }
+    }
+    
+    if (link.type === 'reference' && link.reference?.value && typeof link.reference.value === 'object' && 'slug' in link.reference.value) {
+      return { label: link.label || '', href: `/${link.reference.value.slug}` }
+    }
+    
+    return { label: link.label || '', href: '/' }
+  }) || []
+
   return (
-    <header className="container relative z-20   " {...(theme ? { 'data-theme': theme } : {})}>
-      <div className="py-8 flex justify-between">
-        <Link href="/">
-          <Logo loading="eager" priority="high" className="invert dark:invert-0" />
-        </Link>
-        <HeaderNav data={data} />
-      </div>
-    </header>
+    <Navbar navItems={navItems} />
   )
 }
