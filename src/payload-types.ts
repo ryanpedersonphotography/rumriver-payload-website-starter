@@ -1629,6 +1629,8 @@ export interface Home {
         | SocialProofBlock
         | TestimonialsBlock
         | HistoryCarouselBlock
+        | ScheduleFormBlock
+        | MapSectionBlock
       )[]
     | null;
   _status?: ('draft' | 'published') | null;
@@ -1813,6 +1815,129 @@ export interface HistoryCarouselBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ScheduleFormBlock".
+ */
+export interface ScheduleFormBlock {
+  sectionHeader: {
+    scriptAccent?: string | null;
+    title: string;
+    description?: string | null;
+  };
+  formSettings?: {
+    timeSlots?:
+      | {
+          time: string;
+          id?: string | null;
+        }[]
+      | null;
+    guestCountRanges?:
+      | {
+          label: string;
+          value: string;
+          id?: string | null;
+        }[]
+      | null;
+    submitButtonText?: string | null;
+    /**
+     * URL to redirect to after successful form submission
+     */
+    successRedirectUrl?: string | null;
+  };
+  /**
+   * Configure where form submissions are sent
+   */
+  emailSettings?: {
+    /**
+     * Email address to receive form submissions
+     */
+    notificationEmail?: string | null;
+    /**
+     * Email address form submissions appear to be sent from
+     */
+    fromEmail?: string | null;
+    /**
+     * Prefix for email subjects (will be followed by customer name)
+     */
+    emailSubjectPrefix?: string | null;
+  };
+  styling?: {
+    backgroundGradient?: ('default' | 'dark' | 'light') | null;
+    /**
+     * Form background opacity percentage (80-100)
+     */
+    formTransparency?: number | null;
+    enableAnimation?: boolean | null;
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'scheduleForm';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "MapSectionBlock".
+ */
+export interface MapSectionBlock {
+  sectionHeader: {
+    scriptAccent?: string | null;
+    title: string;
+    description?: string | null;
+  };
+  venueLocation: {
+    streetAddress: string;
+    city: string;
+    state: string;
+    zipCode: string;
+    coordinates?: {
+      latitude?: number | null;
+      longitude?: number | null;
+    };
+  };
+  locationDetails?:
+    | {
+        title: string;
+        /**
+         * Use line breaks for multiple lines of text
+         */
+        content: string;
+        iconType?: ('map-pin' | 'question-mark-circle' | 'radio' | 'building-office' | 'clock' | 'phone') | null;
+        id?: string | null;
+      }[]
+    | null;
+  mapSettings?: {
+    /**
+     * Get this from Google Maps > Share > Embed a map
+     */
+    embedUrl?: string | null;
+    /**
+     * Google Maps directions link
+     */
+    directionsUrl?: string | null;
+    /**
+     * Link to full Google Maps view
+     */
+    fullMapUrl?: string | null;
+    /**
+     * Show "Get Directions" and "Full Map" buttons
+     */
+    showActionButtons?: boolean | null;
+  };
+  styling?: {
+    leftPanelBackground?: ('cream' | 'white' | 'light-gray') | null;
+    /**
+     * Make section fill the full viewport height
+     */
+    fullHeight?: boolean | null;
+    /**
+     * Use 50/50 split layout on desktop
+     */
+    splitLayout?: boolean | null;
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'mapSection';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "header_select".
  */
 export interface HeaderSelect<T extends boolean = true> {
@@ -1871,6 +1996,8 @@ export interface HomeSelect<T extends boolean = true> {
         socialProof?: T | SocialProofBlockSelect<T>;
         testimonials?: T | TestimonialsBlockSelect<T>;
         historyCarousel?: T | HistoryCarouselBlockSelect<T>;
+        scheduleForm?: T | ScheduleFormBlockSelect<T>;
+        mapSection?: T | MapSectionBlockSelect<T>;
       };
   _status?: T;
   updatedAt?: T;
@@ -2021,6 +2148,106 @@ export interface HistoryCarouselBlockSelect<T extends boolean = true> {
         slideInterval?: T;
         showControls?: T;
         showIndicators?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ScheduleFormBlock_select".
+ */
+export interface ScheduleFormBlockSelect<T extends boolean = true> {
+  sectionHeader?:
+    | T
+    | {
+        scriptAccent?: T;
+        title?: T;
+        description?: T;
+      };
+  formSettings?:
+    | T
+    | {
+        timeSlots?:
+          | T
+          | {
+              time?: T;
+              id?: T;
+            };
+        guestCountRanges?:
+          | T
+          | {
+              label?: T;
+              value?: T;
+              id?: T;
+            };
+        submitButtonText?: T;
+        successRedirectUrl?: T;
+      };
+  emailSettings?:
+    | T
+    | {
+        notificationEmail?: T;
+        fromEmail?: T;
+        emailSubjectPrefix?: T;
+      };
+  styling?:
+    | T
+    | {
+        backgroundGradient?: T;
+        formTransparency?: T;
+        enableAnimation?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "MapSectionBlock_select".
+ */
+export interface MapSectionBlockSelect<T extends boolean = true> {
+  sectionHeader?:
+    | T
+    | {
+        scriptAccent?: T;
+        title?: T;
+        description?: T;
+      };
+  venueLocation?:
+    | T
+    | {
+        streetAddress?: T;
+        city?: T;
+        state?: T;
+        zipCode?: T;
+        coordinates?:
+          | T
+          | {
+              latitude?: T;
+              longitude?: T;
+            };
+      };
+  locationDetails?:
+    | T
+    | {
+        title?: T;
+        content?: T;
+        iconType?: T;
+        id?: T;
+      };
+  mapSettings?:
+    | T
+    | {
+        embedUrl?: T;
+        directionsUrl?: T;
+        fullMapUrl?: T;
+        showActionButtons?: T;
+      };
+  styling?:
+    | T
+    | {
+        leftPanelBackground?: T;
+        fullHeight?: T;
+        splitLayout?: T;
       };
   id?: T;
   blockName?: T;

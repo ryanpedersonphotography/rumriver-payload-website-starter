@@ -26,6 +26,7 @@ home-page-migration/
 ├── 06-history-carousel/        # Phase 8: Interactive timeline carousel
 ├── 07-schedule-form/           # Phase 9: Server Actions contact form
 ├── 08-map-section/             # Phase 10: Split-screen map layout
+├── 09-footer-section/          # Phase 11: 3-column footer with heroicons
 └── shared-assets/              # Phase 1: Foundation (design tokens)
 ```
 
@@ -66,7 +67,7 @@ cp shared-assets/styles/animations.css project/src/styles/
 ```
 
 ### **📋 Step 3: Sequential Phase Implementation**
-For each phase (2-10), follow this pattern:
+For each phase (2-11), follow this pattern:
 ```bash
 # 1. Create feature branch
 git checkout -b feat/[section]-migration
