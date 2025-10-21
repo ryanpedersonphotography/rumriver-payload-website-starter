@@ -1621,7 +1621,16 @@ export interface Footer {
  */
 export interface Home {
   id: number;
-  blocks?: (HeroBlock | AlternatingBlocksBlock | GalleryBlock | SocialProofBlock)[] | null;
+  blocks?:
+    | (
+        | HeroBlock
+        | AlternatingBlocksBlock
+        | GalleryBlock
+        | SocialProofBlock
+        | TestimonialsBlock
+        | HistoryCarouselBlock
+      )[]
+    | null;
   _status?: ('draft' | 'published') | null;
   updatedAt?: string | null;
   createdAt?: string | null;
@@ -1744,6 +1753,66 @@ export interface SocialProofBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TestimonialsBlock".
+ */
+export interface TestimonialsBlock {
+  sectionHeader: {
+    scriptAccent: string;
+    title: string;
+    description: string;
+  };
+  testimonials?:
+    | {
+        quote: string;
+        customerName: string;
+        avatarImage: number | Media;
+        starRating: number;
+        galleryLink?: string | null;
+        ctaText?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'testimonials';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "HistoryCarouselBlock".
+ */
+export interface HistoryCarouselBlock {
+  sectionHeader: {
+    scriptAccent?: string | null;
+    title: string;
+    description?: string | null;
+  };
+  historySlides?:
+    | {
+        year: string;
+        title: string;
+        description: string;
+        /**
+         * URL to historical photograph for this time period
+         */
+        image: string;
+        id?: string | null;
+      }[]
+    | null;
+  carouselSettings?: {
+    autoplay?: boolean | null;
+    /**
+     * Time between automatic slide transitions (default: 5000ms = 5 seconds)
+     */
+    slideInterval?: number | null;
+    showControls?: boolean | null;
+    showIndicators?: boolean | null;
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'historyCarousel';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "header_select".
  */
 export interface HeaderSelect<T extends boolean = true> {
@@ -1800,6 +1869,8 @@ export interface HomeSelect<T extends boolean = true> {
         alternatingBlocks?: T | AlternatingBlocksBlockSelect<T>;
         gallery?: T | GalleryBlockSelect<T>;
         socialProof?: T | SocialProofBlockSelect<T>;
+        testimonials?: T | TestimonialsBlockSelect<T>;
+        historyCarousel?: T | HistoryCarouselBlockSelect<T>;
       };
   _status?: T;
   updatedAt?: T;
@@ -1892,6 +1963,64 @@ export interface SocialProofBlockSelect<T extends boolean = true> {
     | {
         quoteText?: T;
         attribution?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TestimonialsBlock_select".
+ */
+export interface TestimonialsBlockSelect<T extends boolean = true> {
+  sectionHeader?:
+    | T
+    | {
+        scriptAccent?: T;
+        title?: T;
+        description?: T;
+      };
+  testimonials?:
+    | T
+    | {
+        quote?: T;
+        customerName?: T;
+        avatarImage?: T;
+        starRating?: T;
+        galleryLink?: T;
+        ctaText?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "HistoryCarouselBlock_select".
+ */
+export interface HistoryCarouselBlockSelect<T extends boolean = true> {
+  sectionHeader?:
+    | T
+    | {
+        scriptAccent?: T;
+        title?: T;
+        description?: T;
+      };
+  historySlides?:
+    | T
+    | {
+        year?: T;
+        title?: T;
+        description?: T;
+        image?: T;
+        id?: T;
+      };
+  carouselSettings?:
+    | T
+    | {
+        autoplay?: T;
+        slideInterval?: T;
+        showControls?: T;
+        showIndicators?: T;
       };
   id?: T;
   blockName?: T;

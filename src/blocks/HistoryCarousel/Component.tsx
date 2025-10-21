@@ -3,7 +3,12 @@
 import { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
-import { ChevronLeft, ChevronRight, Play, Pause } from "lucide-react";
+import { 
+  ChevronLeftIcon, 
+  ChevronRightIcon, 
+  PlayIcon, 
+  PauseIcon 
+} from "@heroicons/react/24/solid";
 import Image from 'next/image';
 
 import type { HistoryCarouselBlock } from '@/payload-types';
@@ -144,32 +149,32 @@ export const HistoryCarouselComponent: React.FC<HistoryCarouselComponentProps> =
         <div className="relative">
           {/* Navigation Buttons */}
           <button
-            className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-white/95 backdrop-blur-sm border-2 border-[#7A8B7F] hover:bg-[#9D6B7B] hover:border-[#9D6B7B] hover:text-white transition-all duration-300 rounded-full p-3 shadow-lg hover:shadow-xl hover:scale-110"
+            className="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-white hover:bg-[#9D6B7B] text-[#6B4E3D] hover:text-white transition-all duration-300 rounded-full p-4 shadow-2xl hover:shadow-xl hover:scale-110 border border-[#6B4E3D]/20"
             onClick={scrollPrev}
             aria-label="Previous photo"
           >
-            <ChevronLeft className="w-6 h-6" />
+            <ChevronLeftIcon className="w-6 h-6" />
           </button>
           
           <button
-            className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-white/95 backdrop-blur-sm border-2 border-[#7A8B7F] hover:bg-[#9D6B7B] hover:border-[#9D6B7B] hover:text-white transition-all duration-300 rounded-full p-3 shadow-lg hover:shadow-xl hover:scale-110"
+            className="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-white hover:bg-[#9D6B7B] text-[#6B4E3D] hover:text-white transition-all duration-300 rounded-full p-4 shadow-2xl hover:shadow-xl hover:scale-110 border border-[#6B4E3D]/20"
             onClick={scrollNext}
             aria-label="Next photo"
           >
-            <ChevronRight className="w-6 h-6" />
+            <ChevronRightIcon className="w-6 h-6" />
           </button>
 
           {/* Autoplay Toggle */}
           {autoplayEnabled && (
             <button
-              className="absolute top-4 right-4 z-10 bg-white/95 backdrop-blur-sm border-2 border-[#7A8B7F] hover:bg-[#9D6B7B] hover:border-[#9D6B7B] hover:text-white transition-all duration-300 rounded-full p-2 shadow-lg"
+              className="absolute top-4 right-4 z-20 bg-white hover:bg-[#9D6B7B] text-[#6B4E3D] hover:text-white transition-all duration-300 rounded-full p-3 shadow-2xl hover:shadow-xl hover:scale-110 border border-[#6B4E3D]/20"
               onClick={toggleAutoplay}
               aria-label={isPlaying ? "Pause slideshow" : "Play slideshow"}
             >
               {isPlaying ? (
-                <Pause className="w-4 h-4" />
+                <PauseIcon className="w-5 h-5" />
               ) : (
-                <Play className="w-4 h-4" />
+                <PlayIcon className="w-5 h-5" />
               )}
             </button>
           )}
@@ -220,14 +225,14 @@ export const HistoryCarouselComponent: React.FC<HistoryCarouselComponentProps> =
           </div>
 
           {/* Progress Indicators */}
-          <div className="flex justify-center mt-8 gap-3">
+          <div className="flex justify-center mt-8 gap-4">
             {scrollSnaps.map((_, index) => (
               <button
                 key={index}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                className={`w-4 h-4 rounded-full transition-all duration-300 border-2 ${
                   index === selectedIndex
-                    ? "bg-[#9D6B7B] scale-125 shadow-lg"
-                    : "bg-[#9D6B7B]/40 hover:bg-[#9D6B7B]/60"
+                    ? "bg-[#9D6B7B] border-[#9D6B7B] scale-125 shadow-lg"
+                    : "bg-white border-[#9D6B7B]/40 hover:border-[#9D6B7B] hover:bg-[#9D6B7B]/20"
                 }`}
                 onClick={() => scrollTo(index)}
                 aria-label={`Go to slide ${index + 1}`}
@@ -236,8 +241,8 @@ export const HistoryCarouselComponent: React.FC<HistoryCarouselComponentProps> =
           </div>
 
           {/* Slide Counter */}
-          <div className="text-center mt-4">
-            <span className="text-[#6B4E3D]/60 text-sm">
+          <div className="text-center mt-6">
+            <span className="text-[#6B4E3D] text-sm font-medium bg-white/80 px-3 py-1 rounded-full shadow-sm">
               {selectedIndex + 1} of {historySlides.length}
             </span>
           </div>
