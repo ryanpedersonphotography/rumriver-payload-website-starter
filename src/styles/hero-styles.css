@@ -5,7 +5,7 @@
   min-height: 100vh !important;
   display: flex !important;
   align-items: center !important;
-  justify-content: center !important;
+  justify-content: flex-start !important;
   overflow: hidden !important;
   color: white !important;
   background-color: #2c241a !important; /* Fallback color */
@@ -55,9 +55,10 @@
 .hotfix-hero-content {
   position: relative !important;
   z-index: 10 !important;
-  text-align: center !important;
+  text-align: left !important;
   max-width: 800px !important;
   padding: 0 2rem !important;
+  margin-left: 2rem !important;
   animation: hotfixFadeInUp 1.2s ease-out !important;
   color: white !important;
 }
@@ -96,7 +97,7 @@
   opacity: 0.95 !important;
   margin-bottom: 3rem !important;
   max-width: 600px !important;
-  margin-left: auto !important;
+  margin-left: 0 !important;
   margin-right: auto !important;
   text-shadow: 0 2px 4px rgba(0,0,0,0.3) !important;
 }
@@ -105,7 +106,7 @@
 .hotfix-hero-buttons {
   display: flex !important;
   gap: 1rem !important;
-  justify-content: center !important;
+  justify-content: flex-start !important;
   flex-wrap: wrap !important;
 }
 
@@ -212,6 +213,7 @@
 @media (max-width: 768px) {
   .hotfix-hero-content {
     padding: 0 1rem !important;
+    margin-left: 1rem !important;
   }
   
   .hotfix-hero-kicker {
@@ -225,7 +227,7 @@
   
   .hotfix-hero-buttons {
     flex-direction: column !important;
-    align-items: center !important;
+    align-items: flex-start !important;
     gap: 0.75rem !important;
   }
   
