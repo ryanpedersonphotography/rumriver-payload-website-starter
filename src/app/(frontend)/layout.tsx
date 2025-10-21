@@ -3,7 +3,27 @@ import type { Metadata } from 'next'
 import { cn } from '@/utilities/ui'
 import { GeistMono } from 'geist/font/mono'
 import { GeistSans } from 'geist/font/sans'
+import { Dancing_Script, Playfair_Display, Montserrat } from 'next/font/google'
 import React from 'react'
+
+// Romantic Wedding Barn Theme Fonts
+const dancingScript = Dancing_Script({ 
+  subsets: ['latin'],
+  variable: '--font-script',
+  display: 'swap'
+})
+
+const playfairDisplay = Playfair_Display({ 
+  subsets: ['latin'],
+  variable: '--font-serif',
+  display: 'swap'  
+})
+
+const montserrat = Montserrat({
+  subsets: ['latin'], 
+  variable: '--font-sans',
+  display: 'swap'
+})
 
 import { AdminBar } from '@/components/AdminBar'
 import { Footer } from '@/Footer/Component'
@@ -20,7 +40,13 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const { isEnabled } = await draftMode()
 
   return (
-    <html className={cn(GeistSans.variable, GeistMono.variable)} lang="en" suppressHydrationWarning>
+    <html className={cn(
+      GeistSans.variable, 
+      GeistMono.variable,
+      dancingScript.variable,
+      playfairDisplay.variable,
+      montserrat.variable
+    )} lang="en" suppressHydrationWarning>
       <head>
         <InitTheme />
         <link href="/favicon.ico" rel="icon" sizes="32x32" />

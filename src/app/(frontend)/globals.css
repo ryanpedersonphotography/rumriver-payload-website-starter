@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ROMANTIC WEDDING BARN THEME - Design System */
+@import '../../styles/design-tokens.css';
+@import '../../styles/animations.css';
+
 @layer base {
   h1,
   h2,
