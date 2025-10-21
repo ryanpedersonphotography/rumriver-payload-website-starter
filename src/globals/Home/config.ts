@@ -5,6 +5,7 @@ import { Hero } from '@/blocks/Hero/config'
 import { SocialProof } from '@/blocks/SocialProof/config'
 import { Testimonials } from '@/blocks/Testimonials/config'
 import { HistoryCarousel } from '@/blocks/HistoryCarousel/config'
+import { ScheduleForm } from '@/blocks/ScheduleForm/config'
 
 export const Home: GlobalConfig = {
   slug: 'home',
@@ -23,6 +24,7 @@ export const Home: GlobalConfig = {
         SocialProof,
         Testimonials,
         HistoryCarousel,
+        ScheduleForm,
         // TODO: Add more blocks as they are created in future phases
         // CarouselBlock, FormBlock, MapBlock, etc.
       ],

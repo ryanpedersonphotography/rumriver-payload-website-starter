@@ -8,6 +8,7 @@ import { Gallery } from '@/blocks/Gallery/Component'
 import { SocialProof } from '@/blocks/SocialProof/Component'
 import { Testimonials } from '@/blocks/Testimonials/Component'
 import { HistoryCarousel } from '@/blocks/HistoryCarousel/Component'
+import { ScheduleForm } from '@/blocks/ScheduleForm/Component'
 import { getCachedGlobal } from '@/utilities/getGlobals'
 import { generateMeta } from '@/utilities/generateMeta'
 
@@ -147,6 +148,13 @@ export default async function HomePage() {
         }}
         autoplay={true}
         slideInterval={5000}
+      />
+      <ScheduleForm
+        sectionHeader={{
+          scriptAccent: "Schedule Your Tour",
+          title: "Start Planning Your Perfect Day",
+          description: "We'd love to show you around our beautiful venue and discuss your wedding vision."
+        }}
       />
     </div>
   )

@@ -13,6 +13,7 @@ import { MediaBlock } from '@/blocks/MediaBlock/Component'
 import { SocialProofBlockComponent } from '@/blocks/SocialProof/Component'
 import { TestimonialsBlockComponent } from '@/blocks/Testimonials/Component'
 import { HistoryCarouselBlockComponent } from '@/blocks/HistoryCarousel/Component'
+import { ScheduleFormBlockComponent } from '@/blocks/ScheduleForm/Component'
 
 const blockComponents = {
   alternatingBlocks: AlternatingBlocksComponent,
@@ -26,6 +27,7 @@ const blockComponents = {
   socialProof: SocialProofBlockComponent,
   testimonials: TestimonialsBlockComponent,
   historyCarousel: HistoryCarouselBlockComponent,
+  scheduleForm: ScheduleFormBlockComponent,
 }
 
 export const RenderBlocks: React.FC<{

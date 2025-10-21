@@ -12,6 +12,7 @@
 @import '../../styles/social-proof-styles.css';
 @import '../../styles/testimonials-styles.css';
 @import '../../styles/history-carousel-styles.css';
+@import '../../styles/schedule-form-styles.css';
 
 @layer base {
   h1,
