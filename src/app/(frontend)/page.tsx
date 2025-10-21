@@ -2,7 +2,7 @@ import React from 'react'
 import { Metadata } from 'next'
 
 import { RenderBlocks } from '@/blocks/RenderBlocks'
-import { Hero } from '@/blocks/Hero/Component'
+import { HeroBlockComponent } from '@/blocks/Hero/Component'
 import { AlternatingBlocks } from '@/blocks/AlternatingBlocks/Component'
 import { Gallery } from '@/blocks/Gallery/Component'
 import { SocialProof } from '@/blocks/SocialProof/Component'
@@ -16,33 +16,39 @@ import { generateMeta } from '@/utilities/generateMeta'
 import type { Home as HomeType } from '@/payload-types'
 
 export default async function HomePage() {
+  let home: HomeType | null = null
+  
   try {
-    const home: HomeType = await getCachedGlobal('home', 1)()
-    
-    // If we have home data with blocks, render them
-    if (home?.blocks && home.blocks.length > 0) {
-      return (
-        <div className="pt-0">
-          <RenderBlocks blocks={home.blocks} />
-        </div>
-      )
-    }
-  } catch (error) {
-    console.log('Home Global not found, rendering default hero')
+    home = await getCachedGlobal('home', 1)()
+  } catch (_error) {
+    console.log('Home Global not found, using fallback content')
   }
   
-  // Fallback: render default components for testing
+  // If we have home data with blocks, render them
+  if (home?.blocks && home.blocks.length > 0) {
+    return (
+      <div className="pt-0">
+        <RenderBlocks blocks={home.blocks} />
+      </div>
+    )
+  }
+  
+  // Fallback: render default components with CMS-compatible structure
   return (
     <div className="pt-0">
-      <Hero 
-        kicker="Where Dreams Begin"
-        title="Rum River"
-        titleAccent="Wedding Barn"
-        description="Nestled along Minnesota's scenic Rum River, our historic barn offers the perfect blend of rustic charm and modern elegance for your once-in-a-lifetime celebration."
-        ctaText="Schedule Your Visit"
-        ctaLink="/contact"
-        backgroundImage="/images/venue/barn-exterior-full-deck-view-evening.jpg"
-        scrollText="Discover Your Perfect Day"
+      <HeroBlockComponent 
+        block={{
+          blockType: 'hero',
+          blockName: 'Hero Section',
+          kicker: "Where Dreams Begin",
+          title: "Rum River",
+          titleAccent: "Wedding Barn",
+          description: "Nestled along Minnesota's scenic Rum River, our historic barn offers the perfect blend of rustic charm and modern elegance for your once-in-a-lifetime celebration.",
+          ctaText: "Schedule Your Visit",
+          ctaLink: "/contact",
+          backgroundImage: "/images/venue/barn-exterior-full-deck-view-evening.jpg",
+          scrollText: "Discover Your Perfect Day"
+        }}
       />
       <AlternatingBlocks 
         sectionHeader={{
