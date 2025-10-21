@@ -1621,7 +1621,7 @@ export interface Footer {
  */
 export interface Home {
   id: number;
-  blocks?: HeroBlock[] | null;
+  blocks?: (HeroBlock | AlternatingBlocksBlock)[] | null;
   _status?: ('draft' | 'published') | null;
   updatedAt?: string | null;
   createdAt?: string | null;
@@ -1642,6 +1642,45 @@ export interface HeroBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'hero';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "AlternatingBlocksBlock".
+ */
+export interface AlternatingBlocksBlock {
+  sectionHeader: {
+    scriptAccent: string;
+    title: string;
+    description: string;
+  };
+  blocks?:
+    | {
+        number: string;
+        title: string;
+        lead?: string | null;
+        content: {
+          root: {
+            type: string;
+            children: {
+              type: any;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        };
+        image: number | Media;
+        layout: 'normal' | 'reverse';
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'alternatingBlocks';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1698,6 +1737,7 @@ export interface HomeSelect<T extends boolean = true> {
     | T
     | {
         hero?: T | HeroBlockSelect<T>;
+        alternatingBlocks?: T | AlternatingBlocksBlockSelect<T>;
       };
   _status?: T;
   updatedAt?: T;
@@ -1717,6 +1757,32 @@ export interface HeroBlockSelect<T extends boolean = true> {
   ctaLink?: T;
   backgroundImage?: T;
   scrollText?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "AlternatingBlocksBlock_select".
+ */
+export interface AlternatingBlocksBlockSelect<T extends boolean = true> {
+  sectionHeader?:
+    | T
+    | {
+        scriptAccent?: T;
+        title?: T;
+        description?: T;
+      };
+  blocks?:
+    | T
+    | {
+        number?: T;
+        title?: T;
+        lead?: T;
+        content?: T;
+        image?: T;
+        layout?: T;
+        id?: T;
+      };
   id?: T;
   blockName?: T;
 }

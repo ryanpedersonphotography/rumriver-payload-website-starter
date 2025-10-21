@@ -7,6 +7,7 @@
 @import '../../styles/animations.css';
 @import '../../styles/navbar-styles.css';
 @import '../../styles/hero-styles.css';
+@import '../../styles/alternating-blocks-styles.css';
 
 @layer base {
   h1,
