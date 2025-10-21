@@ -1,11 +1,12 @@
 import React, { Fragment } from 'react'
 
-import type { Page } from '@/payload-types'
+import type { Page, Home } from '@/payload-types'
 
 import { ArchiveBlock } from '@/blocks/ArchiveBlock/Component'
 import { CallToActionBlock } from '@/blocks/CallToAction/Component'
 import { ContentBlock } from '@/blocks/Content/Component'
 import { FormBlock } from '@/blocks/Form/Component'
+import { HeroBlockComponent } from '@/blocks/Hero/Component'
 import { MediaBlock } from '@/blocks/MediaBlock/Component'
 
 const blockComponents = {
@@ -13,11 +14,12 @@ const blockComponents = {
   content: ContentBlock,
   cta: CallToActionBlock,
   formBlock: FormBlock,
+  hero: HeroBlockComponent,
   mediaBlock: MediaBlock,
 }
 
 export const RenderBlocks: React.FC<{
-  blocks: Page['layout'][0][]
+  blocks: Page['layout'][0][] | Home['blocks']
 }> = (props) => {
   const { blocks } = props
 

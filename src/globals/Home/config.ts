@@ -1,4 +1,5 @@
 import type { GlobalConfig } from 'payload'
+import { Hero } from '@/blocks/Hero/config'
 
 export const Home: GlobalConfig = {
   slug: 'home',
@@ -11,8 +12,9 @@ export const Home: GlobalConfig = {
       name: 'blocks',
       type: 'blocks',
       blocks: [
-        // TODO: Add blocks as they are created in future phases
-        // HeroBlock, AlternatingBlock, GalleryBlock, etc.
+        Hero,
+        // TODO: Add more blocks as they are created in future phases
+        // AlternatingBlock, GalleryBlock, etc.
       ],
     },
   ],

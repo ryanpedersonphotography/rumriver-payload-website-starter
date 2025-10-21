@@ -6,6 +6,7 @@
 @import '../../styles/design-tokens.css';
 @import '../../styles/animations.css';
 @import '../../styles/navbar-styles.css';
+@import '../../styles/hero-styles.css';
 
 @layer base {
   h1,

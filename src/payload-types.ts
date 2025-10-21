@@ -1621,10 +1621,27 @@ export interface Footer {
  */
 export interface Home {
   id: number;
-  blocks?: unknown[] | null;
+  blocks?: HeroBlock[] | null;
   _status?: ('draft' | 'published') | null;
   updatedAt?: string | null;
   createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "HeroBlock".
+ */
+export interface HeroBlock {
+  kicker: string;
+  title: string;
+  titleAccent: string;
+  description: string;
+  ctaText: string;
+  ctaLink: string;
+  backgroundImage: number | Media;
+  scrollText?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'hero';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1677,11 +1694,31 @@ export interface FooterSelect<T extends boolean = true> {
  * via the `definition` "home_select".
  */
 export interface HomeSelect<T extends boolean = true> {
-  blocks?: T | {};
+  blocks?:
+    | T
+    | {
+        hero?: T | HeroBlockSelect<T>;
+      };
   _status?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "HeroBlock_select".
+ */
+export interface HeroBlockSelect<T extends boolean = true> {
+  kicker?: T;
+  title?: T;
+  titleAccent?: T;
+  description?: T;
+  ctaText?: T;
+  ctaLink?: T;
+  backgroundImage?: T;
+  scrollText?: T;
+  id?: T;
+  blockName?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
